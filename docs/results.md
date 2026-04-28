@@ -4,7 +4,7 @@
 
 The full checked-in sample report is available here:
 
-- [sample_output.txt on GitHub](https://github.com/Prtm2110/Geometric/blob/master/sample_output.txt)
+- [sample_output.txt on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/sample_output.txt)
 
 Short excerpt:
 
@@ -22,7 +22,7 @@ Tier 2 Cross Reference
 
 The checked-in DOT graph is available here:
 
-- [sample_graph.dot on GitHub](https://github.com/Prtm2110/Geometric/blob/master/sample_graph.dot)
+- [sample_graph.dot on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/sample_graph.dot)
 
 Short excerpt:
 

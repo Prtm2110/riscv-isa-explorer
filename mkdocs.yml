@@ -1,7 +1,7 @@
 site_name: RISC-V Instruction Set Explorer
-site_url: https://prtm2110.github.io/Geometric/
-repo_url: https://github.com/Prtm2110/Geometric
-repo_name: Prtm2110/Geometric
+site_url: https://prtm2110.github.io/riscv-isa-explorer/
+repo_url: https://github.com/Prtm2110/riscv-isa-explorer
+repo_name: Prtm2110/riscv-isa-explorer
 edit_uri: edit/master/docs/
 
 theme:
