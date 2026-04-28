@@ -31,6 +31,18 @@ python3 -m pip install -r requirements-docs.txt
 mkdocs build
 ```
 
+## Graph Preview
+
+The docs site includes the shared-instruction graph as a rendered SVG.
+
+<div class="graph-preview graph-panel">
+  <img
+    src="assets/generated/sample_graph.svg"
+    alt="RISC-V extension graph showing shared instructions between extensions"
+    class="graph-image"
+  />
+</div>
+
 ## Repository Contents
 
 - `main.py` for CLI orchestration
