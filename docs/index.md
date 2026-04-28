@@ -1,6 +1,6 @@
 # RISC-V Instruction Set Explorer
 
-This project solves the mentorship coding challenge in a small standalone Python project.
+This project is a small standalone Python tool for exploring RISC-V instruction extensions.
 
 It covers:
 

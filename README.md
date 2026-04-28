@@ -4,8 +4,6 @@ This project reads RISC-V instruction data, groups instructions by extension, cr
 
 GitHub Pages: https://prtm2110.github.io/riscv-isa-explorer/
 
-Small Python solution for the RISC-V mentorship coding challenge.
-
 ## Requirements
 
 - Python 3.13 or newer
