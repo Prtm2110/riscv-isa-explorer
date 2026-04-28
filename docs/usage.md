@@ -25,13 +25,13 @@ python3 main.py --refresh-manual
 Write the text report to a file:
 
 ```bash
-python3 main.py --output sample_output.txt
+python3 main.py --output artifacts/sample_output.txt
 ```
 
 Write the graph as DOT:
 
 ```bash
-python3 main.py --graph-dot sample_graph.dot
+python3 main.py --graph-dot artifacts/sample_graph.dot
 ```
 
 ## Test Command

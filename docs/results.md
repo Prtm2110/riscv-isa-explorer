@@ -4,7 +4,7 @@
 
 The full checked-in sample report is available here:
 
-- [sample_output.txt on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/sample_output.txt)
+- [sample_output.txt on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/artifacts/sample_output.txt)
 
 Short excerpt:
 
@@ -20,11 +20,16 @@ Tier 2 Cross Reference
 
 ## Sample Graph Artifact
 
-The checked-in DOT graph is available here:
+The checked-in graph files are available here:
 
-- [sample_graph.dot on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/sample_graph.dot)
+- [sample_graph.dot on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/artifacts/sample_graph.dot)
+- [sample_graph.svg on GitHub](https://github.com/Prtm2110/riscv-isa-explorer/blob/master/artifacts/sample_graph.svg)
 
-Short excerpt:
+## Embedded Graph
+
+![RISC-V extension graph showing shared instructions between extensions](assets/generated/sample_graph.svg){ .graph-image }
+
+## DOT Excerpt
 
 ```dot
 graph riscv_extensions {
@@ -39,3 +44,5 @@ graph riscv_extensions {
 
 Each edge connects two extension tags that share at least one instruction.
 The edge label is the number of shared instructions.
+
+The embedded SVG is generated from the DOT graph so the docs page shows the graph directly with a cleaner presentation.

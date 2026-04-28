@@ -22,8 +22,8 @@ Useful options:
 ```bash
 python3 main.py --refresh-manual
 python3 main.py --manual-dir /path/to/riscv-isa-manual
-python3 main.py --output sample_output.txt
-python3 main.py --graph-dot sample_graph.dot
+python3 main.py --output artifacts/sample_output.txt
+python3 main.py --graph-dot artifacts/sample_graph.dot
 ```
 
 ## Run Tests
@@ -53,6 +53,7 @@ mkdocs build
 ```
 
 GitHub Pages deployment is handled by the workflow in `.github/workflows/docs.yml`.
+The docs site includes an embedded graph view built from the DOT artifact.
 
 ## Project Layout
 
@@ -82,5 +83,6 @@ GitHub Pages deployment is handled by the workflow in `.github/workflows/docs.ym
 
 ## Sample Artifacts
 
-- [sample_output.txt](sample_output.txt)
-- [sample_graph.dot](sample_graph.dot)
+- [artifacts/sample_output.txt](artifacts/sample_output.txt)
+- [artifacts/sample_graph.dot](artifacts/sample_graph.dot)
+- [artifacts/sample_graph.svg](artifacts/sample_graph.svg)

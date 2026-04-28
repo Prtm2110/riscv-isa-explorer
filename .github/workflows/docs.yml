@@ -27,8 +27,16 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
       - name: Install docs dependencies
         run: python -m pip install -r requirements-docs.txt
+
+      - name: Render graph SVG
+        run: python tools/render_graph_svg.py
 
       - name: Build docs
         run: mkdocs build

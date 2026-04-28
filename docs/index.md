@@ -40,6 +40,6 @@ mkdocs build
 - `data/instr_dict.json` for the vendored input data
 - `tests/` for unit tests
 
-## Assignment Prompt
+## Project Notes
 
-The original prompt is kept in the repository root as `assignment.txt`.
+The repository focuses on the final project deliverable, sample artifacts, tests, and documentation site.
