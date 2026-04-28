@@ -1,5 +1,9 @@
 # RISC-V Instruction Set Explorer
 
+This project reads RISC-V instruction data, groups instructions by extension, cross-checks those extensions against the official ISA manual, and generates a simple shared-instruction graph.
+
+GitHub Pages: https://prtm2110.github.io/riscv-isa-explorer/
+
 Small Python solution for the RISC-V mentorship coding challenge.
 
 ## Requirements
