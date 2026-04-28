@@ -4,6 +4,15 @@ This project reads RISC-V instruction data, groups instructions by extension, cr
 
 GitHub Pages: https://prtm2110.github.io/riscv-isa-explorer/
 
+## Graph Preview
+
+![RISC-V extension graph showing shared instructions between extensions](artifacts/sample_graph.svg)
+
+- [View the docs site](https://prtm2110.github.io/riscv-isa-explorer/)
+- [View the results page](https://prtm2110.github.io/riscv-isa-explorer/results/)
+- [Open the SVG artifact](artifacts/sample_graph.svg)
+- [Open the DOT artifact](artifacts/sample_graph.dot)
+
 ## Requirements
 
 - Python 3.13 or newer
@@ -51,7 +60,7 @@ mkdocs build
 ```
 
 GitHub Pages deployment is handled by the workflow in `.github/workflows/docs.yml`.
-The docs site includes an embedded graph view built from the DOT artifact.
+The docs site includes an embedded graph view.
 
 ## Project Layout
 
