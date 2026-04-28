@@ -44,5 +44,3 @@ graph riscv_extensions {
 
 Each edge connects two extension tags that share at least one instruction.
 The edge label is the number of shared instructions.
-
-The embedded SVG is generated from the DOT graph so the docs page shows the graph directly with a cleaner presentation.
