@@ -1,0 +1,30 @@
+site_name: RISC-V Instruction Set Explorer
+site_url: https://prtm2110.github.io/Geometric/
+repo_url: https://github.com/Prtm2110/Geometric
+repo_name: Prtm2110/Geometric
+edit_uri: edit/master/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: indigo
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.action.edit
+    - content.action.view
+
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - Design: design.md
+  - Results: results.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
