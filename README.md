@@ -40,6 +40,30 @@ python3 main.py --graph-dot artifacts/sample_graph.dot
 python3 -m unittest discover -s tests
 ```
 
+## Sample Output
+
+Full sample report:
+
+- [artifacts/sample_output.txt](artifacts/sample_output.txt)
+
+Short excerpt:
+
+```text
+Tier 1 Summary
+rv32_c | 1 instructions | e.g. C.JAL
+rv32_c_f | 4 instructions | e.g. C.FLW
+rv64_a | 11 instructions | e.g. AMOADD.D
+rv_i | 37 instructions | e.g. ADD
+rv_v | 627 instructions | e.g. VAADD.VV
+
+Tier 2 Cross Reference
+60 direct matches
+14 JSON-only extension names
+4 JSON internal or privilege-style tags
+58 manual-only extension names
+45 manual umbrella, profile, or privileged names
+```
+
 ## Docs Site
 
 Install docs dependencies:
