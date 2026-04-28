@@ -1,6 +1,6 @@
 # RISC-V Instruction Set Explorer
 
-This project reads RISC-V instruction data, groups instructions by extension, cross-checks those extensions against the official ISA manual, and generates a simple shared-instruction graph.
+This project reads RISC-V instruction data, groups instructions by extension, cross-checks those extensions against the official ISA manual, and generates a shared-instruction graph.
 
 GitHub Pages: https://prtm2110.github.io/riscv-isa-explorer/
 
@@ -8,15 +8,16 @@ GitHub Pages: https://prtm2110.github.io/riscv-isa-explorer/
 
 ![RISC-V extension graph showing shared instructions between extensions](artifacts/sample_graph.svg)
 
+The graph connects extension tags that share at least one instruction.
+Each edge label is the number of shared instructions.
+
 - [View the docs site](https://prtm2110.github.io/riscv-isa-explorer/)
 - [View the results page](https://prtm2110.github.io/riscv-isa-explorer/results/)
-- [Open the SVG artifact](artifacts/sample_graph.svg)
 - [Open the DOT artifact](artifacts/sample_graph.dot)
 
 ## Requirements
 
 - Python 3.13 or newer
-- `git` for fetching the ISA manual during Tier 2 runs
 
 ## Run
 
@@ -76,7 +77,7 @@ The docs site includes an embedded graph view.
 
 - The code stays flat at the repository root because the project is small.
 - Tier 1 reports raw extension tags exactly as stored in `instr_dict.json`.
-- Tier 2 uses a separate normalization step so JSON tags and manual names can match cleanly.
+- Tier 2 uses a separate normalization step so JSON tags and manual extension names can match cleanly.
 - The graph is available both as plain text in the report and as an optional `.dot` file.
 
 ## Assumptions And Known Limits

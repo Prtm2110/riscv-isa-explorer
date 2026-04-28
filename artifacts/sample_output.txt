@@ -190,14 +190,13 @@ XPERM4 | rv_zbkx, rv_zk, rv_zkn, rv_zks
 XPERM8 | rv_zbkx, rv_zk, rv_zkn, rv_zks
 
 Tier 2 Cross Reference
-59 matched, 19 in JSON only, 103 in manual only
+60 direct matches
+14 JSON-only extension names
+4 JSON internal or privilege-style tags
+58 manual-only extension names
+45 manual umbrella, profile, or privileged names
 
-Extensions In JSON Only
-s
-sdext
-ssctr
-system
-u
+JSON-Only Extension Names
 zbp
 zibi
 zvabd
@@ -213,52 +212,13 @@ zvqdotq
 zvqldot8i
 zvzip
 
-Extensions In Manual Only
-b
-n
-p
-rv128i
-rv32e
-rv64e
-sha
-shcounterenw
-shgatpa
-shlcofideleg
-shmno
-shtvala
-shvsatpa
-shvstvala
-shvstvecd
-sm1p13
-smcdeleg
-smcntrpmf
-smctr
-smdbltrp
-smepmp
-smpqr
-ssccptr
-sscofpmf
-sscounterenw
-ssdbltrp
-ssghi
-ssqosid
-ssstrict
-sstc
-sstvala
-sstvecd
-ssu64xl
-sudef
-sv32
-sv39
-sv48
-sv59
-svade
-svadu
-svjkl
-svnapot
-svpbmt
-svrsw60t59b
-svvptc
+JSON Internal Or Privilege-Style Tags
+s
+sdext
+system
+u
+
+Manual-Only Extension Names
 za
 za128rs
 za64rs
@@ -318,9 +278,57 @@ zvl32b
 zvl512b
 zvl64b
 
+Manual Umbrella, Profile, Or Privileged Names
+b
+n
+p
+rv128i
+rv32e
+rv64e
+sha
+shcounterenw
+shgatpa
+shlcofideleg
+shmno
+shtvala
+shvsatpa
+shvstvala
+shvstvecd
+sm1p13
+smcdeleg
+smcntrpmf
+smctr
+smdbltrp
+smepmp
+smpqr
+ssccptr
+sscofpmf
+sscounterenw
+ssdbltrp
+ssghi
+ssqosid
+ssstrict
+sstc
+sstvala
+sstvecd
+ssu64xl
+sudef
+sv32
+sv39
+sv48
+sv59
+svade
+svadu
+svjkl
+svnapot
+svpbmt
+svrsw60t59b
+svvptc
+
 Cross Reference Notes
-Some JSON-only names are internal-style tags from instr_dict.
-Some manual-only names are privileged or profile extensions that do not appear as instr_dict tags.
+Tier 2 compares normalized extension names from instr_dict.json against named extensions found in the ISA manual.
+JSON internal tags come from privilege or grouping names used by instr_dict rather than manual extension names.
+Manual umbrella or privileged names come from taxonomy, profiles, or privileged chapters and do not map one-to-one to instruction tags.
 
 Shared Instruction Graph
 rv64_zk <-> rv64_zkn (16 shared)

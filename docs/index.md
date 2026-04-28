@@ -1,6 +1,6 @@
 # RISC-V Instruction Set Explorer
 
-This project is a small standalone Python tool for exploring RISC-V instruction extensions.
+This project reads RISC-V instruction data, groups instructions by extension, cross-checks those extensions against the official ISA manual, and generates a shared-instruction graph.
 
 It covers:
 
@@ -33,7 +33,8 @@ mkdocs build
 
 ## Graph Preview
 
-The docs site includes the shared-instruction graph as a rendered SVG.
+The graph connects extension tags that share at least one instruction.
+Each edge label is the number of shared instructions.
 
 <div class="graph-preview graph-panel">
   <img
@@ -54,4 +55,4 @@ The docs site includes the shared-instruction graph as a rendered SVG.
 
 ## Project Notes
 
-The repository focuses on the final project deliverable, sample artifacts, tests, and documentation site.
+The repository focuses on the final project deliverable, checked-in sample artifacts, tests, and the docs site.

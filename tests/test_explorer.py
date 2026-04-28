@@ -86,19 +86,22 @@ class ManualTests(unittest.TestCase):
         === "Smctr" Control Transfer Records Extension, Version 1.0
         == RV32I Base Integer Instruction Set, Version 2.1
         The A extension depends on ext:zicsr[].
+        The corresponding supervisor-level extension, *Ssctr*, is similar.
         ==== ext:zicbom[] Extension for Cache-Block Management
         |*Svinval* |*1.0*
         """
         self.assertEqual(
             extract_manual_tokens(text),
-            {"smctr", "rv32i", "a", "zicsr", "zicbom", "svinval"},
+            {"smctr", "ssctr", "rv32i", "a", "zicsr", "zicbom", "svinval"},
         )
 
     def test_compare_extensions(self) -> None:
-        result = compare_extensions({"a", "zba"}, {"a", "zicsr"})
+        result = compare_extensions({"a", "s", "zba"}, {"a", "b", "zicsr"})
         self.assertEqual(result.matched, ("a",))
         self.assertEqual(result.json_only, ("zba",))
+        self.assertEqual(result.json_internal_only, ("s",))
         self.assertEqual(result.manual_only, ("zicsr",))
+        self.assertEqual(result.manual_context_only, ("b",))
 
 
 class ReportTests(unittest.TestCase):
@@ -109,14 +112,20 @@ class ReportTests(unittest.TestCase):
             ExtensionComparison(
                 matched=("a",),
                 json_only=("zba",),
+                json_internal_only=("system",),
                 manual_only=("zicsr",),
+                manual_context_only=("b",),
             ),
             [GraphEdge(left="rv_a", right="rv_b", shared_count=2)],
         )
         self.assertIn("Tier 1 Summary", report)
         self.assertIn("rv_i | 1 instructions | e.g. ADD", report)
         self.assertIn("SUB | rv_i, rv_m", report)
-        self.assertIn("1 matched, 1 in JSON only, 1 in manual only", report)
+        self.assertIn("1 direct matches", report)
+        self.assertIn("1 JSON-only extension names", report)
+        self.assertIn("1 JSON internal or privilege-style tags", report)
+        self.assertIn("1 manual-only extension names", report)
+        self.assertIn("1 manual umbrella, profile, or privileged names", report)
         self.assertIn("rv_a <-> rv_b (2 shared)", report)
         self.assertIn("Cross Reference Notes", report)
 
@@ -140,7 +149,8 @@ class ReportTests(unittest.TestCase):
 
         self.assertIn("rv_i | 2 instructions | e.g. ADD", report)
         self.assertIn("SUB | rv_i, rv_m", report)
-        self.assertIn("3 matched, 0 in JSON only, 0 in manual only", report)
+        self.assertIn("3 direct matches", report)
+        self.assertIn("0 JSON-only extension names", report)
 
 
 if __name__ == "__main__":

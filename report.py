@@ -26,24 +26,33 @@ def render_text_report(
 
     lines.append("")
     lines.append("Tier 2 Cross Reference")
-    lines.append(
-        f"{len(comparison.matched)} matched, "
-        f"{len(comparison.json_only)} in JSON only, "
-        f"{len(comparison.manual_only)} in manual only"
-    )
+    lines.append(f"{len(comparison.matched)} direct matches")
+    lines.append(f"{len(comparison.json_only)} JSON-only extension names")
+    lines.append(f"{len(comparison.json_internal_only)} JSON internal or privilege-style tags")
+    lines.append(f"{len(comparison.manual_only)} manual-only extension names")
+    lines.append(f"{len(comparison.manual_context_only)} manual umbrella, profile, or privileged names")
 
     lines.append("")
-    lines.append("Extensions In JSON Only")
+    lines.append("JSON-Only Extension Names")
     lines.extend(comparison.json_only or ["None"])
 
     lines.append("")
-    lines.append("Extensions In Manual Only")
+    lines.append("JSON Internal Or Privilege-Style Tags")
+    lines.extend(comparison.json_internal_only or ["None"])
+
+    lines.append("")
+    lines.append("Manual-Only Extension Names")
     lines.extend(comparison.manual_only or ["None"])
 
     lines.append("")
+    lines.append("Manual Umbrella, Profile, Or Privileged Names")
+    lines.extend(comparison.manual_context_only or ["None"])
+
+    lines.append("")
     lines.append("Cross Reference Notes")
-    lines.append("Some JSON-only names are internal-style tags from instr_dict.")
-    lines.append("Some manual-only names are privileged or profile extensions that do not appear as instr_dict tags.")
+    lines.append("Tier 2 compares normalized extension names from instr_dict.json against named extensions found in the ISA manual.")
+    lines.append("JSON internal tags come from privilege or grouping names used by instr_dict rather than manual extension names.")
+    lines.append("Manual umbrella or privileged names come from taxonomy, profiles, or privileged chapters and do not map one-to-one to instruction tags.")
 
     lines.append("")
     lines.append("Shared Instruction Graph")

@@ -19,10 +19,21 @@ MANUAL_TOKEN_BLACKLIST = {
     "state",
     "supervisor",
 }
+JSON_INTERNAL_TAGS = {"s", "u", "system", "sdext"}
+MANUAL_CONTEXT_PREFIXES = ("sh", "sm", "ss", "su", "sv")
+MANUAL_CONTEXT_TAGS = {"b", "n", "p", "rv128i", "rv32e", "rv64e"}
 
 EXTENSION_REF_RE = re.compile(r"\bext(?:link)?:([A-Za-z0-9]+)(?:\[\])?")
 BASE_RE = re.compile(r"\bRV(?:32|64|128)[IE]\b")
 SINGLE_EXTENSION_RE = re.compile(r"\b([ABCDFHKMNPQSUV])\s+extension\b")
+EXTENSION_NAME_RE = re.compile(
+    r"\bextension name is\s+[\"*`]?([A-Za-z0-9]+)[\"*`]?",
+    re.IGNORECASE,
+)
+CORRESPONDING_EXTENSION_RE = re.compile(
+    r"\bcorresponding\s+\w+(?:-\w+)*\s+extension,\s+[\"*`]?([A-Za-z0-9]+)[\"*`]?",
+    re.IGNORECASE,
+)
 QUOTED_HEADING_RE = re.compile(r'^\s*=+\s+"([A-Za-z0-9]+)"', re.MULTILINE)
 UNQUOTED_EXTENSION_HEADING_RE = re.compile(
     r"^\s*=+\s+([A-Za-z0-9]+)\b.*\bExtension\b",
@@ -38,7 +49,9 @@ TABLE_EXTENSION_RE = re.compile(
 class ExtensionComparison:
     matched: tuple[str, ...]
     json_only: tuple[str, ...]
+    json_internal_only: tuple[str, ...]
     manual_only: tuple[str, ...]
+    manual_context_only: tuple[str, ...]
 
 
 def normalize_json_tag(tag: str, mnemonic: str) -> set[str]:
@@ -61,6 +74,14 @@ def normalize_json_tag(tag: str, mnemonic: str) -> set[str]:
     if body == tag.lower():
         return {body}
     return {part for part in body.split("_") if part}
+
+
+def is_json_internal_tag(tag: str) -> bool:
+    return tag in JSON_INTERNAL_TAGS
+
+
+def is_manual_context_tag(tag: str) -> bool:
+    return tag in MANUAL_CONTEXT_TAGS or tag.startswith(MANUAL_CONTEXT_PREFIXES)
 
 
 def collect_json_extensions(instr_dict: dict[str, dict]) -> set[str]:
@@ -117,6 +138,8 @@ def extract_manual_tokens(text: str) -> set[str]:
         EXTENSION_REF_RE,
         BASE_RE,
         SINGLE_EXTENSION_RE,
+        EXTENSION_NAME_RE,
+        CORRESPONDING_EXTENSION_RE,
         QUOTED_HEADING_RE,
         UNQUOTED_EXTENSION_HEADING_RE,
         TABLE_EXTENSION_RE,
@@ -142,8 +165,19 @@ def compare_extensions(
     json_extensions: set[str],
     manual_extensions: set[str],
 ) -> ExtensionComparison:
+    matched = json_extensions & manual_extensions
+    json_only = sorted(json_extensions - manual_extensions)
+    manual_only = sorted(manual_extensions - json_extensions)
+
+    json_internal_only = tuple(tag for tag in json_only if is_json_internal_tag(tag))
+    json_direct_only = tuple(tag for tag in json_only if not is_json_internal_tag(tag))
+    manual_context_only = tuple(tag for tag in manual_only if is_manual_context_tag(tag))
+    manual_direct_only = tuple(tag for tag in manual_only if not is_manual_context_tag(tag))
+
     return ExtensionComparison(
-        matched=tuple(sorted(json_extensions & manual_extensions)),
-        json_only=tuple(sorted(json_extensions - manual_extensions)),
-        manual_only=tuple(sorted(manual_extensions - json_extensions)),
+        matched=tuple(sorted(matched)),
+        json_only=json_direct_only,
+        json_internal_only=json_internal_only,
+        manual_only=manual_direct_only,
+        manual_context_only=manual_context_only,
     )
